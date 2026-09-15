@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民乐考级纸件与赴考脚注核对</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>民乐考级 · 纸件与赴考脚注核对</h1>
+  <div class="version-bar" id="versionBar"></div>
+</header>
+
+<nav class="tabs">
+  <button data-tab="prospectus" class="active">① 简章脚注</button>
+  <button data-tab="children">② 孩子与材料</button>
+  <button data-tab="checks">③ 核对结论</button>
+  <button data-tab="checklist">④ 装袋清单与时间带</button>
+</nav>
+
+<main>
+  <!-- ============ 简章 ============ -->
+  <section id="tab-prospectus" class="tab active">
+    <div class="toolbar">
+      <button class="primary" id="newVersionBtn">据当前版改版（旧结论立即失效）</button>
+      <button id="newVersionBlankBtn">另建空白简章版本</button>
+      <span class="hint">条款改一个字，旧核对结论都会标记失效，需重新核对。</span>
+    </div>
+    <div class="layout2">
+      <div>
+        <h2>条款列表（按公告依据）</h2>
+        <div id="clauseList" class="clause-list"></div>
+      </div>
+      <div>
+        <h2 id="clauseFormTitle">新增 / 编辑条款</h2>
+        <form id="clauseForm" class="card form"></form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 孩子 ============ -->
+  <section id="tab-children" class="tab">
+    <div class="toolbar">
+      <button class="primary" id="addChildBtn">＋ 添加孩子</button>
+      <button id="syncMaterialsBtn">按当前简章生成/校准清单</button>
+      <span class="hint">生成后可在每个孩子卡片里改状态、份数、占用原件与交验时段。</span>
+    </div>
+    <div id="childCards" class="child-cards"></div>
+  </section>
+
+  <!-- ============ 核对 ============ -->
+  <section id="tab-checks" class="tab">
+    <div class="toolbar">
+      <button class="primary big" id="runCheckBtn">▶ 依据当前简章重新核对</button>
+      <span id="checkMeta" class="hint"></span>
+    </div>
+    <div id="staleBanner" class="stale-banner hidden"></div>
+    <div class="layout2">
+      <div>
+        <h2>结论（每条附公告依据）</h2>
+        <div id="findings"></div>
+      </div>
+      <div>
+        <h2>应携原件链</h2>
+        <div id="originalPanel"></div>
+        <h2>历史核对</h2>
+        <div id="runHistory"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 清单 ============ -->
+  <section id="tab-checklist" class="tab">
+    <div class="toolbar">
+      <button id="printBtn">打印 / 另存 PDF</button>
+      <span class="hint">按装袋顺序排列；时间带标出当天最早冲突点与应携原件。</span>
+    </div>
+    <div id="earliestBand" class="earliest-band"></div>
+    <div id="timelineWrap">
+      <svg id="timeline" viewBox="0 0 960 360" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <div id="checklistSheets"></div>
+  </section>
+</main>
+
+<div id="modal" class="modal hidden"><div class="modal-card" id="modalCard"></div></div>
+<script src="app.js"></script>
+</body>
+</html>
